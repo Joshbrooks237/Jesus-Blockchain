@@ -2,6 +2,8 @@
 
 A simple append-only ledger system that stores user entries with SHA-256 hashing and hash-chained history.
 
+> **Note:** This is a technical prototype. It does not include financial, token, or blockchain network functionality.
+
 ## What This Is
 
 This is a minimal cryptographically structured log system.
