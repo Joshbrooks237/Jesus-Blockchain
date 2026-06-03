@@ -14,404 +14,133 @@
       --accent: #58a6ff;
       --accent-hover: #79b8ff;
       --green: #7ee787;
-      --yellow: #f0c75a;
-      --red: #ff7b72;
       --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     }
     * { box-sizing: border-box; }
     body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
-    .wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 80px; }
-    header h1 { margin: 0 0 4px; font-size: 26px; letter-spacing: -0.4px; }
-    header p { margin: 0 0 22px; color: var(--muted); font-size: 13px; }
-
-    /* Tabs */
-    .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--border); margin-bottom: 22px; }
-    .tab { background: none; border: none; color: var(--muted); padding: 8px 14px; font-size: 14px; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; }
-    .tab:hover { color: var(--text); }
-    .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
-    .pane { display: none; }
-    .pane.active { display: block; }
-
-    /* Cards / forms */
-    .card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; margin-bottom: 20px; }
-    label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 5px; }
-    input, textarea {
-      width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
-      color: var(--text); padding: 9px 12px; font-size: 14px; font-family: inherit;
-      margin-bottom: 12px; resize: vertical;
-    }
+    .wrap { max-width: 820px; margin: 0 auto; padding: 32px 20px 80px; }
+    header h1 { margin: 0 0 4px; font-size: 28px; letter-spacing: -0.5px; }
+    header p { margin: 0 0 28px; color: var(--muted); font-size: 13px; }
+    .card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 24px; }
+    label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+    input, textarea { width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); padding: 10px 12px; font-size: 14px; font-family: inherit; margin-bottom: 14px; resize: vertical; }
     input:focus, textarea:focus { outline: none; border-color: var(--accent); }
-    button.primary { background: var(--accent); color: #04101f; border: none; border-radius: 8px; padding: 9px 16px; font-size: 14px; font-weight: 600; cursor: pointer; }
-    button.primary:hover { background: var(--accent-hover); }
-    button.primary:disabled { opacity: 0.5; cursor: default; }
-    button.ghost { background: transparent; border: 1px solid var(--border); color: var(--muted); border-radius: 8px; padding: 6px 12px; font-size: 13px; cursor: pointer; }
+    button { background: var(--accent); color: #04101f; border: none; border-radius: 8px; padding: 10px 18px; font-size: 14px; font-weight: 600; cursor: pointer; }
+    button:hover { background: var(--accent-hover); }
+    button:disabled { opacity: 0.6; cursor: default; }
+    .row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+    .row h2 { font-size: 16px; margin: 0; }
+    button.ghost { background: transparent; border: 1px solid var(--border); color: var(--muted); padding: 6px 12px; font-size: 13px; }
     button.ghost:hover { border-color: var(--accent); color: var(--accent); }
-
-    /* Row header */
-    .row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
-    .row h2 { font-size: 15px; margin: 0; }
-
-    /* Entry cards */
-    .entry { border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; background: var(--bg); }
-    .entry .meta { display: flex; gap: 8px; flex-wrap: wrap; font-size: 11px; color: var(--muted); margin-bottom: 6px; }
+    .entry { border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; background: var(--bg); }
+    .entry .meta { display: flex; gap: 10px; flex-wrap: wrap; font-size: 12px; color: var(--muted); margin-bottom: 8px; }
     .entry .author { color: var(--accent); font-weight: 600; }
-    .entry .badge { color: var(--yellow); }
-    .entry .content { white-space: pre-wrap; word-break: break-word; font-size: 14px; margin-bottom: 8px; }
+    .entry .content { white-space: pre-wrap; word-break: break-word; margin-bottom: 10px; }
     .hash { font-family: var(--mono); font-size: 11px; color: var(--muted); word-break: break-all; }
     .hash b { color: var(--green); }
-    .hash .blk { color: var(--yellow); }
-
-    /* Block cards */
-    .block-card { border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; background: var(--bg); }
-    .block-card h3 { margin: 0 0 6px; font-size: 14px; }
-    .block-card .bmeta { font-size: 12px; color: var(--muted); }
-    .block-card .root { font-family: var(--mono); font-size: 11px; color: var(--green); word-break: break-all; margin-top: 6px; }
-
-    /* Verify result */
-    .verify-box { border-radius: 10px; padding: 14px 16px; margin-top: 14px; border: 1px solid var(--border); }
-    .verify-box.ok { border-color: var(--green); }
-    .verify-box.fail { border-color: var(--red); }
-    .verify-box .status { font-weight: 700; font-size: 15px; margin-bottom: 8px; }
-    .verify-box.ok .status { color: var(--green); }
-    .verify-box.fail .status { color: var(--red); }
-    .proof-step { font-family: var(--mono); font-size: 11px; color: var(--muted); padding: 2px 0; }
-
-    /* Graph */
-    #graph-canvas { width: 100%; height: 340px; background: var(--panel); border: 1px solid var(--border); border-radius: 10px; display: block; cursor: grab; }
-    #graph-canvas:active { cursor: grabbing; }
-    .graph-legend { font-size: 12px; color: var(--muted); margin-top: 8px; }
-    .graph-legend span { margin-right: 14px; }
-
-    /* Fellowship */
-    .author-card { border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 14px; background: var(--bg); }
-    .author-badge { font-size: 22px; width: 36px; text-align: center; }
-    .author-info { flex: 1; }
-    .author-info .name { font-weight: 600; color: var(--accent); }
-    .author-info .level { font-size: 12px; color: var(--yellow); }
-    .author-info .stats { font-size: 12px; color: var(--muted); margin-top: 2px; }
-    .author-rank { font-size: 20px; color: var(--muted); min-width: 28px; text-align: right; }
-
-    /* Misc */
-    .empty { color: var(--muted); text-align: center; padding: 24px; font-size: 14px; }
-    .seal-notice { background: #1a2a1a; border: 1px solid var(--green); color: var(--green); border-radius: 8px; padding: 10px 14px; font-size: 13px; margin-top: 12px; }
-    .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--panel); border: 1px solid var(--border); padding: 9px 16px; border-radius: 8px; font-size: 13px; opacity: 0; transition: opacity 0.2s; pointer-events: none; white-space: nowrap; }
+    .empty { color: var(--muted); text-align: center; padding: 24px; }
+    .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--panel); border: 1px solid var(--border); padding: 10px 18px; border-radius: 8px; font-size: 14px; opacity: 0; transition: opacity 0.2s; pointer-events: none; }
     .toast.show { opacity: 1; }
-    .toast.err { border-color: var(--red); color: var(--red); }
+    .toast.err { border-color: #f85149; color: #ff7b72; }
   </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <h1>SCO Ledger</h1>
-    <p>Append-only · SHA-256 hash-chained · Merkle blocks · Phase 2</p>
-  </header>
+  <div class="wrap">
+    <header>
+      <h1>SCO Ledger</h1>
+      <p>Append-only · SHA-256 hash-chained entries</p>
+    </header>
 
-  <div class="tabs">
-    <button class="tab active" data-tab="entries">Entries</button>
-    <button class="tab" data-tab="blocks">Blocks</button>
-    <button class="tab" data-tab="verify">Verify</button>
-    <button class="tab" data-tab="graph">Graph</button>
-    <button class="tab" data-tab="fellowship">Fellowship</button>
-  </div>
-
-  <!-- ENTRIES -->
-  <div id="pane-entries" class="pane active">
     <div class="card">
       <form id="entry-form">
         <label for="author">Author</label>
         <input id="author" placeholder="anonymous" autocomplete="off" />
         <label for="content">Entry</label>
         <textarea id="content" rows="3" placeholder="Write something to commit to the ledger…" required></textarea>
-        <button class="primary" type="submit" id="submit-btn">Commit entry</button>
+        <button type="submit" id="submit-btn">Commit entry</button>
       </form>
-      <div id="seal-notice"></div>
     </div>
-    <div class="row"><h2>Recent entries</h2><button class="ghost" id="refresh-entries">Refresh</button></div>
-    <div id="entries-list"></div>
-  </div>
 
-  <!-- BLOCKS -->
-  <div id="pane-blocks" class="pane">
-    <div class="row"><h2>Sealed blocks</h2><button class="ghost" id="refresh-blocks">Refresh</button></div>
-    <p style="font-size:13px;color:var(--muted);margin-top:0">A block is sealed every <strong id="block-size-label">10</strong> entries. Each block stores a Merkle root over its entries' hashes.</p>
-    <div id="blocks-list"></div>
-  </div>
-
-  <!-- VERIFY -->
-  <div id="pane-verify" class="pane">
-    <div class="card">
-      <label for="verify-id">Entry ID</label>
-      <input id="verify-id" type="number" min="1" placeholder="e.g. 7" />
-      <button class="primary" id="verify-btn">Generate proof</button>
+    <div class="row">
+      <h2>Entries</h2>
+      <button class="ghost" id="refresh-btn">Refresh</button>
     </div>
-    <div id="verify-result"></div>
+    <div id="entries"></div>
   </div>
 
-  <!-- GRAPH -->
-  <div id="pane-graph" class="pane">
-    <div class="row"><h2>Chain graph</h2><button class="ghost" id="refresh-graph">Refresh</button></div>
-    <canvas id="graph-canvas"></canvas>
-    <div class="graph-legend">
-      <span style="color:var(--accent)">● Entry</span>
-      <span style="color:var(--yellow)">■ Block boundary</span>
-      <span style="color:var(--muted)">— hash link</span>
-    </div>
-  </div>
+  <div id="toast" class="toast"></div>
 
-  <!-- FELLOWSHIP -->
-  <div id="pane-fellowship" class="pane">
-    <div class="row"><h2>Fellowship leaderboard</h2><button class="ghost" id="refresh-fellowship">Refresh</button></div>
-    <p style="font-size:13px;color:var(--muted);margin-top:0">Authors ranked by total entries committed.</p>
-    <div id="fellowship-list"></div>
-  </div>
-</div>
+  <script>
+    const toastEl = document.getElementById("toast");
 
-<div id="toast" class="toast"></div>
+    function toast(msg, isErr) {
+      toastEl.textContent = msg;
+      toastEl.className = "toast show" + (isErr ? " err" : "");
+      setTimeout(() => { toastEl.className = "toast"; }, 2200);
+    }
 
-<script>
-// ── Utilities ────────────────────────────────────────────────────────────────
-const $ = id => document.getElementById(id);
-const toastEl = $("toast");
+    function esc(s) {
+      return String(s).replace(/[&<>"']/g, c =>
+        ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    }
 
-function toast(msg, isErr) {
-  toastEl.textContent = msg;
-  toastEl.className = "toast show" + (isErr ? " err" : "");
-  setTimeout(() => { toastEl.className = "toast"; }, 2400);
-}
+    function short(h) {
+      return h ? h.slice(0, 12) + "…" + h.slice(-8) : "";
+    }
 
-function esc(s) {
-  return String(s).replace(/[&<>"']/g, c =>
-    ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
-}
+    async function loadEntries() {
+      try {
+        const res  = await fetch("/entries");
+        const data = await res.json();
+        const el   = document.getElementById("entries");
+        if (!data.entries.length) {
+          el.innerHTML = '<div class="empty">No entries yet. Be the first to commit one.</div>';
+          return;
+        }
+        el.innerHTML = data.entries.map(e => `
+          <div class="entry">
+            <div class="meta">
+              <span class="author">${esc(e.author)}</span>
+              <span>#${e.id}</span>
+              <span>${new Date(e.created_at).toLocaleString()}</span>
+            </div>
+            <div class="content">${esc(e.content)}</div>
+            <div class="hash">hash <b>${short(e.hash)}</b> &nbsp;·&nbsp; prev ${short(e.prev_hash)}</div>
+          </div>`).join("");
+      } catch (err) {
+        toast("Failed to load entries", true);
+      }
+    }
 
-function short(h) {
-  return h ? h.slice(0, 10) + "…" + h.slice(-6) : "—";
-}
-
-async function api(url) {
-  const r = await fetch(url);
-  if (!r.ok) throw new Error((await r.json().catch(() => ({}))).error || r.statusText);
-  return r.json();
-}
-
-// ── Tabs ─────────────────────────────────────────────────────────────────────
-document.querySelectorAll(".tab").forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
-    document.querySelectorAll(".pane").forEach(p => p.classList.remove("active"));
-    btn.classList.add("active");
-    $("pane-" + btn.dataset.tab).classList.add("active");
-    if (btn.dataset.tab === "graph") drawGraph();
-    if (btn.dataset.tab === "fellowship") loadFellowship();
-    if (btn.dataset.tab === "blocks") loadBlocks();
-  });
-});
-
-// ── Entries ──────────────────────────────────────────────────────────────────
-async function loadEntries() {
-  try {
-    const data = await api("/entries?limit=50");
-    const el = $("entries-list");
-    if (!data.entries.length) { el.innerHTML = '<div class="empty">No entries yet.</div>'; return; }
-    el.innerHTML = data.entries.map(e => `
-      <div class="entry">
-        <div class="meta">
-          <span class="author">${esc(e.author)}</span>
-          <span>#${e.id}</span>
-          <span>${new Date(e.created_at).toLocaleString()}</span>
-          ${e.block_id ? `<span class="blk">block #${e.block_id}</span>` : ""}
-        </div>
-        <div class="content">${esc(e.content)}</div>
-        <div class="hash">hash <b>${short(e.hash)}</b> · prev ${short(e.prev_hash)}</div>
-      </div>`).join("");
-  } catch (err) { toast(err.message, true); }
-}
-
-$("entry-form").addEventListener("submit", async e => {
-  e.preventDefault();
-  const btn = $("submit-btn");
-  btn.disabled = true;
-  try {
-    const res = await fetch("/entry", {
-      method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ author: $("author").value, content: $("content").value }),
+    document.getElementById("entry-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById("submit-btn");
+      btn.disabled = true;
+      try {
+        const res = await fetch("/entry", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            author:  document.getElementById("author").value,
+            content: document.getElementById("content").value,
+          }),
+        });
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err.error || "Request failed");
+        }
+        document.getElementById("content").value = "";
+        toast("Entry committed");
+        await loadEntries();
+      } catch (err) {
+        toast(err.message, true);
+      } finally {
+        btn.disabled = false;
+      }
     });
-    if (!res.ok) { const err = await res.json().catch(() => ({})); throw new Error(err.error || "Failed"); }
-    const data = await res.json();
-    $("content").value = "";
-    const notice = $("seal-notice");
-    if (data.block_sealed) {
-      notice.innerHTML = `<div class="seal-notice">Block #${data.block_sealed.id} sealed — Merkle root: <code>${short(data.block_sealed.merkle_root)}</code></div>`;
-      setTimeout(() => { notice.innerHTML = ""; }, 6000);
-    } else { notice.innerHTML = ""; }
-    toast("Entry committed");
-    await loadEntries();
-  } catch (err) { toast(err.message, true); } finally { btn.disabled = false; }
-});
 
-$("refresh-entries").addEventListener("click", loadEntries);
-
-// ── Blocks ───────────────────────────────────────────────────────────────────
-async function loadBlocks() {
-  try {
-    const data = await api("/blocks?limit=50");
-    const el = $("blocks-list");
-    if (!data.blocks.length) { el.innerHTML = '<div class="empty">No blocks sealed yet. Every ' + ($("block-size-label").textContent) + ' entries form a block.</div>'; return; }
-    el.innerHTML = data.blocks.map(b => `
-      <div class="block-card">
-        <h3>Block #${b.id} <span style="color:var(--muted);font-weight:400;font-size:13px">· ${b.entry_count} entries (#${b.first_entry}–#${b.last_entry})</span></h3>
-        <div class="bmeta">${new Date(b.created_at).toLocaleString()}</div>
-        <div class="root">Merkle root: ${b.merkle_root}</div>
-      </div>`).join("");
-  } catch (err) { toast(err.message, true); }
-}
-
-$("refresh-blocks").addEventListener("click", loadBlocks);
-
-// ── Verify ───────────────────────────────────────────────────────────────────
-$("verify-btn").addEventListener("click", async () => {
-  const id = parseInt($("verify-id").value, 10);
-  if (!id) return toast("Enter a valid entry ID", true);
-  const el = $("verify-result");
-  el.innerHTML = "";
-  try {
-    const d = await api(`/verify/${id}`);
-    if (!d.verified && d.reason) {
-      el.innerHTML = `<div class="verify-box fail"><div class="status">⚠ Not in a block yet</div><p style="font-size:13px;color:var(--muted)">${esc(d.reason)}</p></div>`;
-      return;
-    }
-    const proofHtml = d.proof.map((p, i) =>
-      `<div class="proof-step">step ${i + 1}: ${p.side === "left" ? "H(sibling + current)" : "H(current + sibling)"} &nbsp; sibling: ${short(p.hash)}</div>`
-    ).join("");
-    el.innerHTML = `
-      <div class="verify-box ${d.verified ? "ok" : "fail"}">
-        <div class="status">${d.verified ? "✓ Verified" : "✗ Invalid"}</div>
-        <div style="font-size:13px;color:var(--muted);margin-bottom:8px">Entry #${d.entry_id} in Block #${d.block_id}</div>
-        <div class="hash" style="margin-bottom:6px">Merkle root: <b>${short(d.merkle_root)}</b></div>
-        <div class="hash" style="margin-bottom:8px">Leaf index: ${d.leaf_index}</div>
-        <div style="font-size:12px;color:var(--muted);margin-bottom:4px">Proof path (${d.proof.length} steps):</div>
-        ${proofHtml}
-      </div>`;
-  } catch (err) { toast(err.message, true); }
-});
-
-// ── Graph ────────────────────────────────────────────────────────────────────
-let graphEntries = [];
-
-async function drawGraph() {
-  try {
-    const data = await api("/entries?limit=60");
-    graphEntries = data.entries.slice().reverse(); // oldest first
-    renderGraph();
-  } catch (err) { toast(err.message, true); }
-}
-
-function renderGraph() {
-  const canvas = $("graph-canvas");
-  const dpr = window.devicePixelRatio || 1;
-  const W = canvas.offsetWidth;
-  const H = canvas.offsetHeight;
-  canvas.width  = W * dpr;
-  canvas.height = H * dpr;
-  const ctx = canvas.getContext("2d");
-  ctx.scale(dpr, dpr);
-
-  ctx.clearRect(0, 0, W, H);
-
-  if (!graphEntries.length) {
-    ctx.fillStyle = "#8b949e";
-    ctx.font = "14px sans-serif";
-    ctx.textAlign = "center";
-    ctx.fillText("No entries yet.", W / 2, H / 2);
-    return;
-  }
-
-  const cols = Math.min(graphEntries.length, Math.floor((W - 40) / 56) || 1);
-  const rows = Math.ceil(graphEntries.length / cols);
-  const cellW = (W - 40) / cols;
-  const cellH = Math.min(80, (H - 40) / rows);
-
-  const nodeR = 12;
-
-  const positions = graphEntries.map((_, i) => {
-    const col = i % cols;
-    const row = Math.floor(i / cols);
-    return { x: 20 + cellW * col + cellW / 2, y: 24 + cellH * row + cellH / 2 };
-  });
-
-  // Draw edges
-  ctx.strokeStyle = "#30363d";
-  ctx.lineWidth = 1.5;
-  for (let i = 1; i < positions.length; i++) {
-    ctx.beginPath();
-    ctx.moveTo(positions[i - 1].x, positions[i - 1].y);
-    ctx.lineTo(positions[i].x, positions[i].y);
-    ctx.stroke();
-  }
-
-  // Draw block boundary lines
-  graphEntries.forEach((e, i) => {
-    if (i > 0 && e.block_id && graphEntries[i - 1].block_id !== e.block_id) {
-      const mx = (positions[i - 1].x + positions[i].x) / 2;
-      const my = (positions[i - 1].y + positions[i].y) / 2;
-      ctx.save();
-      ctx.strokeStyle = "#f0c75a";
-      ctx.lineWidth = 2;
-      ctx.setLineDash([4, 3]);
-      ctx.beginPath();
-      ctx.arc(mx, my, 8, 0, Math.PI * 2);
-      ctx.stroke();
-      ctx.restore();
-    }
-  });
-
-  // Draw nodes
-  graphEntries.forEach((e, i) => {
-    const { x, y } = positions[i];
-    ctx.beginPath();
-    ctx.arc(x, y, nodeR, 0, Math.PI * 2);
-    ctx.fillStyle = e.block_id ? "#1f3a2a" : "#1a2a3a";
-    ctx.fill();
-    ctx.strokeStyle = e.block_id ? "#7ee787" : "#58a6ff";
-    ctx.lineWidth = 1.5;
-    ctx.stroke();
-
-    ctx.fillStyle = e.block_id ? "#7ee787" : "#58a6ff";
-    ctx.font = `bold 9px ${getComputedStyle(document.body).fontFamily}`;
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillText(`#${e.id}`, x, y);
-  });
-}
-
-$("refresh-graph").addEventListener("click", drawGraph);
-window.addEventListener("resize", () => {
-  if (document.querySelector(".tab.active")?.dataset.tab === "graph") renderGraph();
-});
-
-// ── Fellowship ───────────────────────────────────────────────────────────────
-async function loadFellowship() {
-  try {
-    const data = await api("/fellowship?limit=50");
-    const el = $("fellowship-list");
-    if (!data.authors.length) { el.innerHTML = '<div class="empty">No authors yet.</div>'; return; }
-    el.innerHTML = data.authors.map((a, i) => `
-      <div class="author-card">
-        <div class="author-badge">${esc(a.level.badge)}</div>
-        <div class="author-info">
-          <div class="name">${esc(a.author)}</div>
-          <div class="level">${esc(a.level.title)}</div>
-          <div class="stats">${a.entry_count} ${a.entry_count === 1 ? "entry" : "entries"} · since ${new Date(a.first_seen).toLocaleDateString()}</div>
-        </div>
-        <div class="author-rank">#${i + 1}</div>
-      </div>`).join("");
-  } catch (err) { toast(err.message, true); }
-}
-
-$("refresh-fellowship").addEventListener("click", loadFellowship);
-
-// ── Init ─────────────────────────────────────────────────────────────────────
-loadEntries();
-</script>
+    document.getElementById("refresh-btn").addEventListener("click", loadEntries);
+    loadEntries();
+  </script>
 </body>
 </html>
