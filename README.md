@@ -18,14 +18,21 @@ This creates a verifiable history where each entry depends on the one before it.
 
 ---
 
-## Core Features (Phase 1)
+## Core Features (Phase 2)
 
 - POST /entry — create a new ledger entry
 - GET /entries — retrieve all entries (newest first)
+- GET /blocks — list sealed Merkle blocks
+- GET /blocks/:id — block detail with its entries
+- GET /verify/:id — Merkle proof for a single entry
+- GET /fellowship — author leaderboard with progression levels
+- GET /fellowship/:author — single author profile
 - GET /health — server health check
-- Simple web UI to submit and view entries
 - SHA-256 hashing per entry
 - Hash-chained entries (each entry references previous hash)
+- Merkle tree blocks (sealed every 10 entries by default; set `BLOCK_SIZE` env var to change)
+- Fellowship progression system (Seeker → Witness → Scribe → Elder → Keeper)
+- Graph view, blocks panel, and verification UI
 
 ---
 
@@ -113,7 +120,15 @@ Opens on http://localhost:3000 by default.
 
 ---
 
+## Environment Variables
+
+| Variable | Default | Description |
+|---|---|---|
+| `PORT` | 3000 | HTTP port (set automatically by Railway) |
+| `DATA_DIR` | `./data` | Directory for the SQLite file |
+| `BLOCK_SIZE` | 10 | Number of entries per Merkle block |
+
 ## Roadmap
 
-- **Phase 2:** Merkle tree blocks, verification endpoints, graph view, fellowship progression system
+- **Phase 2 (complete):** Merkle tree blocks, verification endpoints, graph view, fellowship progression system
 - **Phase 3:** Sacred geometry visualization, torus/hex topology rendering, narrative anchoring system
