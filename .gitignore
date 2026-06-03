@@ -1,0 +1,10 @@
+node_modules/
+*.log
+.env
+.DS_Store
+
+# Local SQLite data (use a Railway volume in production)
+data/
+*.sqlite
+*.sqlite3
+*.db
